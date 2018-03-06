@@ -1,0 +1,10 @@
+//Items
+
+item.theterrifyingingot.name=Ужасный слиток
+//Blocks
+
+tile.theterrifyingblock.name=Блок из ужасных слитков
+
+tile.infusionaltar=Алтарь Превращения
+//tabName
+itemGroup.tab_ttb=The Terrifying Beats

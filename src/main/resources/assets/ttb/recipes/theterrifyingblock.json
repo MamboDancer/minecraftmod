@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "XXX",
+        "XXX",
+        "XXX"
+    ],
+    "key": {
+        "X": {
+            "item": "ttb:theterrifyingingot"
+        }
+    },
+    "result": {
+        "item": "ttb:theterrifyingblock"
+        
+    }
+}

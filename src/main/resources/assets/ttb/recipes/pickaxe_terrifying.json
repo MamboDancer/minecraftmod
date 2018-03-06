@@ -1,0 +1,20 @@
+ {
+     "type": "minecraft:crafting_shaped",
+     "pattern": [
+         "CCC",
+         " R ",
+         " R "
+     ],
+     "key": {
+         "R": {
+             "item": "ttb:theterrifyingingot"
+         },
+        "C": {
+             "item": "ttb:theterrifyingblock"
+ 
+         },
+         "result": {
+             "item": "ttb:pickaxe_terrifying"
+         }
+     }
+ }

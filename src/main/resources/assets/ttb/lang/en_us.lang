@@ -1,0 +1,12 @@
+//Items
+
+item.theterrifyingingot.name=The Terrifying Ingot 
+item.pickaxe_terrifying.name=The Terrifying Pickaxe
+item.sword_terrifying.name=The Terrifying Sword
+//Blocks
+
+tile.theterrifyingblock.name=The Terrifying Block
+
+tile.infusionaltar.name=Infusion Altar
+//tabName
+itemGroup.tab_ttb=The Terrifying Beats
