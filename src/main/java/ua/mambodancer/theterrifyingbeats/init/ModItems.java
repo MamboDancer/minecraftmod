@@ -28,13 +28,18 @@ public class ModItems {
 	
 	
 	//ITEMS
-	public static final Item THE_TERRIFYING_INGOT = new ItemBase("theterrifyingingot");
+	public static final Item THE_TERRIFYING_INGOT = new ItemBase(Reference.MOD_ID + ":" + "theterrifyingingot");
+	public static final Item CATHALYZATOR = new ItemBase(Reference.MOD_ID + ":" + "cathalyzator");
+	public static final Item CATHALYZATOR_INGOT = new ItemBase(Reference.MOD_ID + ":" + "cathalyzatoringot");
+	public static final Item INFUSED_STAR = new ItemBase(Reference.MOD_ID + ":" + "infusedstar");
+	public static final Item UNINFUSED_STAR = new ItemBase(Reference.MOD_ID + ":" + "uninfusedstar");
+	public static final Item UNINFUSED_PICK_AXE= new ItemBase(Reference.MOD_ID + ":" + "uninfusedpickaxe");
 	//TOOLS
-	public static final Item THE_TERRIFYING_PICK_AXE = new ToolPickaxe("pickaxe_terrifying",TOOL_TERRIFYING);
+	public static final Item THE_TERRIFYING_PICK_AXE = new ToolPickaxe(Reference.MOD_ID + ":" + "pickaxe_terrifying",TOOL_TERRIFYING);
 //	public static final Item THE_TERRIFYING_AXE = new ToolAxe("theterrifyingaxe_terrifying",TOOL_TERRIFYING);
 //	public static final Item THE_TERRIFYING_HOE = new ToolHoe("theterrifyinghoe_terrifying",TOOL_TERRIFYING);
 //	public static final Item THE_TERRIFYING_SHOVEL = new ToolShovel("theterrifyingshovel_terrifying",TOOL_TERRIFYING);
-	public static final Item THE_TERRIFYING_SWORD = new ToolSword("sword_terrifying",TOOL_TERRIFYING);
+	public static final Item THE_TERRIFYING_SWORD = new ToolSword(Reference.MOD_ID + ":" + "sword_terrifying",TOOL_TERRIFYING);
 	//ARMOR
 //	public static final Item THE_TERRIFYING_HELMET = new ArmourBase("terrifyinghelmet", ARMOR_TERRIFYING,1,EntityEquipmentSlot.HEAD);
 //	public static final Item THE_TERRIFYING_CHEST = new ArmourBase("terrifyinghelmet", ARMOR_TERRIFYING,1,EntityEquipmentSlot.CHEST);

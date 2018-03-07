@@ -13,12 +13,13 @@
 //	}	
 //    public static void register()
 //    {
-////    	 CraftingHelper.register(new ResourceLocation("ttb", "theterrifyingblock"), (IRecipeFactory) (context, json) -> CraftingHelper.getRecipe(json, context));
-////    	 CraftingHelper.register(new ResourceLocation("ttb", "recipes/pickaxe_terrifying"), (IRecipeFactory) (context, json) -> CraftingHelper.getRecipe(json, context));
+//    	 CraftingHelper.register(new ResourceLocation("ttb", "theterrifyingblock"), (IRecipeFactory) (context, json) -> CraftingHelper.getRecipe(json, context));
+//    	 CraftingHelper.register(new ResourceLocation("ttb", "recipes/pickaxe_terrifying"), (IRecipeFactory) (context, json) -> CraftingHelper.getRecipe(json, context));
+//    	 CraftingHelper.register(new ResourceLocation("ttb", "uninfusedstar"), (IRecipeFactory) (context, json) -> CraftingHelper.getRecipe(json, context));
 //    }
 //
-////    private static void registerRecipes(String name)
-////    {
-////       
-////    }
+//    private static void registerRecipes(String name)
+//   {
+//       
+//    }
 //}

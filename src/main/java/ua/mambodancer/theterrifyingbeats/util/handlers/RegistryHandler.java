@@ -8,6 +8,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import ua.mambodancer.theterrifyingbeats.Main;
+import ua.mambodancer.theterrifyingbeats.init.EntityInit;
 import ua.mambodancer.theterrifyingbeats.init.ModBlocks;
 import ua.mambodancer.theterrifyingbeats.init.ModItems;
 import ua.mambodancer.theterrifyingbeats.util.IHasModel;
@@ -49,5 +50,8 @@ public class RegistryHandler {
 	{
 		NetworkRegistry.INSTANCE.registerGuiHandler(Main.instance, new GuiHandler());
 	}
-
+	public static void preInitRegistries() {
+		EntityInit.registerEntities();
+//		RenderHandler.registerEntityRenders();
+	} 
 }

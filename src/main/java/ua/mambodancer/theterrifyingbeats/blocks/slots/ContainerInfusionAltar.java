@@ -26,10 +26,10 @@ private final TileEntityInfusionAltar tileentity;
 	{
 		this.tileentity = tileentity;
 		
-		this.addSlotToContainer(new Slot(tileentity, 0, 26, 11));
-		this.addSlotToContainer(new Slot(tileentity, 1, 26, 59));
+		this.addSlotToContainer(new Slot(tileentity, 0, 113, 24));
+		this.addSlotToContainer(new Slot(tileentity, 1, 47, 24));
 		this.addSlotToContainer(new SlotInfusionAltarFuel(tileentity, 2, 7, 35));
-		this.addSlotToContainer(new SlotInfusionAltarOutput(player.player, tileentity, 3, 81, 36));
+		this.addSlotToContainer(new SlotInfusionAltarOutput(player.player, tileentity, 3, 80,32));
 		
 		for(int y = 0; y < 3; y++)
 		{

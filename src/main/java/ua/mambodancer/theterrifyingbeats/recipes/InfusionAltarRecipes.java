@@ -7,6 +7,7 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Table;
 
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import ua.mambodancer.theterrifyingbeats.init.ModBlocks;
 import ua.mambodancer.theterrifyingbeats.init.ModItems;
@@ -23,9 +24,10 @@ public class InfusionAltarRecipes {
 	}
 	
 	private InfusionAltarRecipes() 
-	{
-		addAltarRecipe(new ItemStack(ModBlocks.THE_TERRIFYING_INGOT_BLOCK), new ItemStack(ModBlocks.THE_TERRIFYING_INGOT_BLOCK), new ItemStack(ModItems.THE_TERRIFYING_PICK_AXE), 5.0F);
-//		addSinteringRecipe(new ItemStack(Blocks.ACACIA_FENCE), new ItemStack(Blocks.ACACIA_FENCE_GATE), new ItemStack(BlockInit.SINTERING_FURNACE), 5.0F);
+	{// создавать по рецепту в каждий слот
+		addAltarRecipe(new ItemStack(ModItems.UNINFUSED_STAR), new ItemStack(ModItems.CATHALYZATOR_INGOT), new ItemStack(ModItems.INFUSED_STAR), 555.0F);
+		addAltarRecipe(new ItemStack(Items.DIAMOND), new ItemStack(Items.EGG), new ItemStack(Items.ELYTRA), 555.0F);
+		addAltarRecipe(new ItemStack(ModItems.INFUSED_STAR), new ItemStack(ModItems.UNINFUSED_PICK_AXE), new ItemStack(ModItems.THE_TERRIFYING_PICK_AXE), 555.0F);
 	}
 
 	

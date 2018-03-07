@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "ttb:cathalyzatoringot"
+        }
+    ],
+    "result": {
+        "item": "ttb:cathalyzator",
+        "count": 9
+    }
+}

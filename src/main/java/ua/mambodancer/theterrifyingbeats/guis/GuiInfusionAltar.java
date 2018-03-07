@@ -67,8 +67,8 @@ public class GuiInfusionAltar extends GuiContainer {
 			this.drawTexturedModalRect(this.guiLeft + 8, this.guiTop + 54 + 12 - k, 176, 12 - k, 14, k + 1);
 		}
 		
-		int l = this.getCookProgressScaled(24);
-		this.drawTexturedModalRect(this.guiLeft + 44, this.guiTop + 36, 176, 14, l + 1, 16);
+		int l = this.getCookProgressScaled(47);
+		this.drawTexturedModalRect(this.guiLeft + 25, this.guiTop + 76, 177, 20, l + 1, 16);
 	}
 
 	private int getBurnLeftScaled(int pixels) {

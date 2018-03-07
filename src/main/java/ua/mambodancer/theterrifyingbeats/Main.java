@@ -13,6 +13,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import ua.mambodancer.theterrifyingbeats.init.ModItems;
 import ua.mambodancer.theterrifyingbeats.proxy.CommonProxy;
 import ua.mambodancer.theterrifyingbeats.util.Reference;
+import ua.mambodancer.theterrifyingbeats.util.handlers.GuiHandler;
 import ua.mambodancer.theterrifyingbeats.util.handlers.RecipeHandler;
 import ua.mambodancer.theterrifyingbeats.util.handlers.RegistryHandler;
 import ua.mambodancer.theterrifyingbeats.worldgen.ModWorldGeneration;
@@ -29,7 +30,7 @@ public class Main {
 	public static void PreInit(FMLPreInitializationEvent event){
 	
 		GameRegistry.registerWorldGenerator(new ModWorldGeneration(), 3);
-		
+		RegistryHandler.initRegistries();
 	}
 	@EventHandler
 	public static void Init(FMLInitializationEvent event){
@@ -39,7 +40,7 @@ public class Main {
 	}
 	@EventHandler
 	public static void PostInit(FMLPostInitializationEvent event){
-	
+		
 	}
 	public static CreativeTabs tabTTB = new CreativeTabs("tab_ttb") {
 		@Override
