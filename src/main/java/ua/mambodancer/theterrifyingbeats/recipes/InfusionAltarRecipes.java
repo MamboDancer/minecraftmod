@@ -12,33 +12,35 @@ import net.minecraft.item.ItemStack;
 import ua.mambodancer.theterrifyingbeats.init.ModBlocks;
 import ua.mambodancer.theterrifyingbeats.init.ModItems;
 public class InfusionAltarRecipes {
-	
-	
+
+
 	private static final InfusionAltarRecipes INSTANCE = new InfusionAltarRecipes();
 	private final Table<ItemStack, ItemStack, ItemStack> smeltingList = HashBasedTable.<ItemStack, ItemStack, ItemStack>create();
 	private final Map<ItemStack, Float> experienceList = Maps.<ItemStack, Float>newHashMap();
-	
+
 	public static InfusionAltarRecipes getInstance()
 	{
 		return INSTANCE;
 	}
-	
+
 	private InfusionAltarRecipes() 
 	{// создавать по рецепту в каждий слот
 		addAltarRecipe(new ItemStack(ModItems.UNINFUSED_STAR), new ItemStack(ModItems.CATHALYZATOR_INGOT), new ItemStack(ModItems.INFUSED_STAR), 555.0F);
-		addAltarRecipe(new ItemStack(Items.DIAMOND), new ItemStack(Items.EGG), new ItemStack(Items.ELYTRA), 555.0F);
-		addAltarRecipe(new ItemStack(ModItems.INFUSED_STAR), new ItemStack(ModItems.UNINFUSED_PICK_AXE), new ItemStack(ModItems.THE_TERRIFYING_PICK_AXE), 555.0F);
+		addAltarRecipe(new ItemStack(Items.DIAMOND), new ItemStack(Items.EGG), new ItemStack(Items.ELYTRA),  555.0F);
+		addAltarRecipe(new ItemStack(ModItems.INFUSED_STAR), new ItemStack(ModItems.UNINFUSED_PICK_AXE), new ItemStack(ModItems.ONE_TIME_INFUSED_PICKAXE), 555.0F);
+		addAltarRecipe(new ItemStack(ModItems.INFUSED_STAR), new ItemStack(ModItems.ONE_TIME_INFUSED_PICKAXE), new ItemStack(ModItems.TWO_TIME_INFUSED_PICKAXE), 555.0F);
+		addAltarRecipe(new ItemStack(ModItems.INFUSED_STAR), new ItemStack(ModItems.TWO_TIME_INFUSED_PICKAXE), new ItemStack(ModItems.THREE_TIME_INFUSED_PICKAXE), 555.0F);
 	}
 
-	
+
 	public void addAltarRecipe(ItemStack input1, ItemStack input2, ItemStack result, float experience) 
 	{
-		if(getAltarResult(input1, input2) != ItemStack.EMPTY) return;
+		if(getAltarRecipe(input1, input2) != ItemStack.EMPTY) return;
 		this.smeltingList.put(input1, input2, result);
 		this.experienceList.put(result, Float.valueOf(experience));
 	}
 	
-	public ItemStack getAltarResult(ItemStack input1, ItemStack input2) 
+	public ItemStack getAltarRecipe(ItemStack input1, ItemStack input2) 
 	{
 		for(Entry<ItemStack, Map<ItemStack, ItemStack>> entry : this.smeltingList.columnMap().entrySet()) 
 		{

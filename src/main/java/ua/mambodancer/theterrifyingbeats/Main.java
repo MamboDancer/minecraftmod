@@ -9,7 +9,10 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
 import ua.mambodancer.theterrifyingbeats.init.ModItems;
 import ua.mambodancer.theterrifyingbeats.proxy.CommonProxy;
 import ua.mambodancer.theterrifyingbeats.util.Reference;
@@ -31,12 +34,26 @@ public class Main {
 	
 		GameRegistry.registerWorldGenerator(new ModWorldGeneration(), 3);
 		RegistryHandler.initRegistries();
+
+		SimpleNetworkWrapper network = NetworkRegistry.INSTANCE.newSimpleChannel(Reference.MOD_ID);
+//		network.registerMessage(new PacketUpdatePedestal.Handler(), PacketUpdatePedestal.class, 0, Side.CLIENT);
+//		network.registerMessage(new PacketRequestUpdatePedestal.Handler(), PacketRequestUpdatePedestal.class, 1, Side.SERVER);
 	}
+	
+	
+
+
+	
+	
+	
+
+
+	
 	@EventHandler
 	public static void Init(FMLInitializationEvent event){
 		RecipeHandler.registerCrafting();
 		RecipeHandler.registerSmelting();
-		
+		proxy.registerRenderers();
 	}
 	@EventHandler
 	public static void PostInit(FMLPostInitializationEvent event){
@@ -49,6 +66,7 @@ public class Main {
 			return new ItemStack(ModItems.THE_TERRIFYING_INGOT);
 		}
 	};
+	public static SimpleNetworkWrapper wrapper;
 }
 
 

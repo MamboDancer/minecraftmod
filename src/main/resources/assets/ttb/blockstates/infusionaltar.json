@@ -1,10 +1,10 @@
 {
-    "variants": 
-    {
+    "variants": {
+        "normal": { "model": "ttb:infusionaltar" },
         "burning=false,facing=north": { "model": "ttb:infusionaltar" },
         "burning=false,facing=east": { "model": "ttb:infusionaltar", "y": 90 },
         "burning=false,facing=south": { "model": "ttb:infusionaltar", "y": 180 },
-        "burning=false,facing=west": { "model": "tttb:infusionaltar", "y": 270 },
+        "burning=false,facing=west": { "model": "ttb:infusionaltar", "y": 270 },
         "burning=true,facing=north": { "model": "ttb:infusionaltar" },
         "burning=true,facing=east": { "model": "ttb:infusionaltar", "y": 90 },
         "burning=true,facing=south": { "model": "ttb:infusionaltar", "y": 180 },

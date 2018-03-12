@@ -22,6 +22,8 @@ public class ContainerInfusionAltar extends Container {
 private final TileEntityInfusionAltar tileentity;
 	private int cookTime, totalCookTime, burnTime, currentBurnTime;
 	
+	
+	
 	public ContainerInfusionAltar(InventoryPlayer player, TileEntityInfusionAltar tileentity) 
 	{
 		this.tileentity = tileentity;
@@ -106,7 +108,7 @@ private final TileEntityInfusionAltar tileentity;
 			{		
 				Slot slot1 = (Slot)this.inventorySlots.get(index + 1);
 				
-				if(!InfusionAltarRecipes.getInstance().getAltarResult(stack1, slot1.getStack()).isEmpty())
+				if(!InfusionAltarRecipes.getInstance().getAltarRecipe(stack1, slot1.getStack()).isEmpty())
 				{
 					if(!this.mergeItemStack(stack1, 0, 2, false)) 
 					{
@@ -152,4 +154,7 @@ private final TileEntityInfusionAltar tileentity;
 		}
 		return stack;
 	}
-}	
+}
+
+
+

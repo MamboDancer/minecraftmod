@@ -7,7 +7,11 @@ item.ttb:cathalyzator.name=Infusion Cathalyzator
 item.ttb:cathalyzatoringot.name=Cathalyzator Ingot
 item.ttb:uninfusedstar.name=Uninfused Star
 item.ttb:infusedstar.name=Infused Star
+item.ttb:onetimeinfusedpickaxe.name=Infused Pickaxe(1)
+item.ttb:twotimesinfusedpickaxe.name=Infused Pickaxe(2)
+item.ttb:threetimesinfusedpickaxe.name=Infused Pickaxe(3)
 item.ttb:uninfusedpickaxe.name=Uninfused Pickaxe
+
 
 
 //Blocks

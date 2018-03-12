@@ -2,6 +2,7 @@ package ua.mambodancer.theterrifyingbeats.blocks;
 
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
@@ -11,10 +12,13 @@ import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
@@ -22,24 +26,51 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.Mirror;
 import net.minecraft.util.Rotation;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import ua.mambodancer.theterrifyingbeats.Main;
+import ua.mambodancer.theterrifyingbeats.blocks.tileentities.TESRAltar;
 import ua.mambodancer.theterrifyingbeats.blocks.tileentities.TileEntityInfusionAltar;
 import ua.mambodancer.theterrifyingbeats.init.ModBlocks;
+import ua.mambodancer.theterrifyingbeats.init.ModItems;
 import ua.mambodancer.theterrifyingbeats.util.IHasModel;
 import ua.mambodancer.theterrifyingbeats.util.Reference;
 
-public class InfusionAltarBlock extends BlockBase implements ITileEntityProvider
+public class InfusionAltarBlock extends Block implements ITileEntityProvider,IHasModel
 {
 	public final static PropertyDirection FACING = BlockHorizontal.FACING;
 	public final static PropertyBool BURNING = PropertyBool.create("burning");
 
-	public InfusionAltarBlock(String name) 
+	public InfusionAltarBlock(String name, Material material) 
 	{
-		super(name, Material.IRON);
+		super(material);
+		setUnlocalizedName(name);
+		setRegistryName(name);
+		setCreativeTab(Main.tabTTB);
 		setSoundType(SoundType.METAL);
+		setHardness(5.0f);
+		setResistance(15f);//obsidian
+		setHarvestLevel("pickaxe",2);
+		setLightLevel(0f);
+		
+		ModBlocks.BLOCKS.add(this);
+		ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
 		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(BURNING, false));
+	}
+	public static final AxisAlignedBB INFUSION_ALTAR_BLOCK_AABB = new AxisAlignedBB(0,0,0,1,1,1);
+	@Override
+	public boolean isOpaqueCube(IBlockState state) {
+		return false;
+	}
+	@Override
+	public boolean isFullCube(IBlockState state) {
+		return false;
 	}
 
 	@Override
@@ -81,6 +112,8 @@ public class InfusionAltarBlock extends BlockBase implements ITileEntityProvider
 			else if (face == EnumFacing.WEST && west.isFullBlock() && !east.isFullBlock()) face = EnumFacing.EAST;
 			else if (face == EnumFacing.EAST && east.isFullBlock() && !west.isFullBlock()) face = EnumFacing.WEST;
 			worldIn.setBlockState(pos, state.withProperty(FACING, face), 2);
+//			 EntityItem entityItem = new EntityItem(worldIn, pos.getX(), pos.getY()+1, pos.getZ(), stack);
+//			 worldIn.spawnEntity(Item.getItemFromBlock(ModBlocks.INFUSION_THING));
 		}
 	}
 
@@ -103,6 +136,7 @@ public class InfusionAltarBlock extends BlockBase implements ITileEntityProvider
 	public TileEntity createNewTileEntity(World worldIn, int meta) 
 	{
 		return new TileEntityInfusionAltar();
+		
 	}
 
 	@Override
@@ -162,5 +196,20 @@ public class InfusionAltarBlock extends BlockBase implements ITileEntityProvider
 	{
 		return ((EnumFacing)state.getValue(FACING)).getIndex();
 	}	
+	@Override
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+		return INFUSION_ALTAR_BLOCK_AABB;
+	}
+	@Override
+	public void registerModels() {
+		Main.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
+		
+	}
+	 @SideOnly(Side.CLIENT)
+	    public void initModel() {
+	        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+	        // Bind our TESR to our tile entity
+	        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityInfusionAltar.class, new TESRAltar());
 
+}
 }

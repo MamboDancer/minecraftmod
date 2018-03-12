@@ -1,20 +1,19 @@
- {
-     "type": "minecraft:crafting_shaped",
-     "pattern": [
-         "XXX",
-         "XYX",
-         "XXX"
-     ],
-     "key": {
-         "X": {
-             "item": "minecraft:nether_star"
-         },
-        "Y": {
-             "item": "ttb:cathalyzatorblock"
- 
-         },
-         "result": {
-             "item": "ttb:uninfusedstar"
-         }
-     }
- }
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "XXX",
+        "XNX",
+        "XXX"
+    ],
+    "key": {
+        "X": {
+            "item": "ttb:cathalyzatoringot"
+    },
+        "N": {
+            "item": "minecraft:nether_star"
+        }
+    },
+    "result": {
+        "item": "ttb:uninfusedstar"
+    }
+}

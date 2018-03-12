@@ -18,13 +18,17 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraftforge.common.util.INBTSerializable;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import ua.mambodancer.theterrifyingbeats.Main;
 import ua.mambodancer.theterrifyingbeats.blocks.InfusionAltarBlock;
 import ua.mambodancer.theterrifyingbeats.init.ModBlocks;
 import ua.mambodancer.theterrifyingbeats.init.ModItems;
@@ -33,10 +37,9 @@ import ua.mambodancer.theterrifyingbeats.util.Reference;
 
 public class TileEntityInfusionAltar extends TileEntity implements IInventory, ITickable
 {
-
-	private NonNullList<ItemStack> inventory = NonNullList.<ItemStack>withSize(4, ItemStack.EMPTY);
+	NonNullList<ItemStack> inventory = NonNullList.<ItemStack>withSize(4, ItemStack.EMPTY);
 	private String customName;
-	
+	public long lastChangeTime;
 	private int burnTime;
 	private int currentBurnTime;
 	private int cookTime;
@@ -119,6 +122,8 @@ public class TileEntityInfusionAltar extends TileEntity implements IInventory, I
 	@Override
 	public void readFromNBT(NBTTagCompound compound)
 	{
+		((INBTSerializable<NBTTagCompound>) inventory).deserializeNBT(compound.getCompoundTag("inventory"));
+		lastChangeTime = compound.getLong("lastChangeTime");
 		super.readFromNBT(compound);
 		this.inventory = NonNullList.<ItemStack>withSize(this.getSizeInventory(), ItemStack.EMPTY);
 		ItemStackHelper.loadAllItems(compound, this.inventory);
@@ -133,6 +138,8 @@ public class TileEntityInfusionAltar extends TileEntity implements IInventory, I
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) 
 	{
+		compound.setTag("inventory", ((INBTSerializable<NBTTagCompound>) inventory).serializeNBT());
+		compound.setLong("lastChangeTime", lastChangeTime);
 		super.writeToNBT(compound);
 		compound.setInteger("BurnTime", (short)this.burnTime);
 		compound.setInteger("CookTime", (short)this.cookTime);
@@ -224,7 +231,7 @@ public class TileEntityInfusionAltar extends TileEntity implements IInventory, I
 	
 	public int getCookTime(ItemStack input1, ItemStack input2) 
 	{
-		return 2000;
+		return 200;
 	}
 	
 	private boolean canSmelt() 
@@ -232,7 +239,7 @@ public class TileEntityInfusionAltar extends TileEntity implements IInventory, I
 		if(((ItemStack)this.inventory.get(0)).isEmpty() || ((ItemStack)this.inventory.get(1)).isEmpty()) return false;
 		else 
 		{
-			ItemStack result = InfusionAltarRecipes.getInstance().getAltarResult((ItemStack)this.inventory.get(0), (ItemStack)this.inventory.get(1));	
+			ItemStack result = InfusionAltarRecipes.getInstance().getAltarRecipe((ItemStack)this.inventory.get(0), (ItemStack)this.inventory.get(1));	
 			if(result.isEmpty()) return false;
 			else
 			{
@@ -251,7 +258,7 @@ public class TileEntityInfusionAltar extends TileEntity implements IInventory, I
 		{
 			ItemStack input1 = (ItemStack)this.inventory.get(0);
 			ItemStack input2 = (ItemStack)this.inventory.get(1);
-			ItemStack result = InfusionAltarRecipes.getInstance().getAltarResult(input1, input2);
+			ItemStack result = InfusionAltarRecipes.getInstance().getAltarRecipe(input1, input2);
 			ItemStack output = (ItemStack)this.inventory.get(3);
 			
 			if(output.isEmpty()) this.inventory.set(3, result.copy());
@@ -273,20 +280,9 @@ public class TileEntityInfusionAltar extends TileEntity implements IInventory, I
 			{
 				Block block = Block.getBlockFromItem(item);
 
-				if (block == Blocks.WOODEN_SLAB) return 150;
-				if (block.getDefaultState().getMaterial() == Material.WOOD) return 300;
-				if (block == Blocks.COAL_BLOCK) return 16000;
 				
 			}
 
-			if (item instanceof ItemTool && "WOOD".equals(((ItemTool)item).getToolMaterialName())) return 200;
-			if (item instanceof ItemSword && "WOOD".equals(((ItemSword)item).getToolMaterialName())) return 200;
-			if (item instanceof ItemHoe && "WOOD".equals(((ItemHoe)item).getMaterialName())) return 200;
-			if (item == Items.DIAMOND) return 20000;
-			if (item == Items.COAL) return 1600;
-			if (item == Items.LAVA_BUCKET) return 20000;
-			if (item == Item.getItemFromBlock(Blocks.SAPLING)) return 100;
-			if (item == Items.BLAZE_ROD) return 2400;
 			if (item == Item.getItemFromBlock(ModBlocks.THE_TERRIFYING_INGOT_BLOCK)) return 2281488;
 			if (item == ModItems.CATHALYZATOR) return 125;
 			if (item == ModItems.CATHALYZATOR_INGOT) return 125*9;
@@ -376,4 +372,10 @@ public class TileEntityInfusionAltar extends TileEntity implements IInventory, I
 	{
 		this.inventory.clear();
 	}
+	@Override
+	public AxisAlignedBB getRenderBoundingBox() {
+		return new AxisAlignedBB(getPos(), getPos().add(1, 2, 1));
+	}
+	
+	
 }
