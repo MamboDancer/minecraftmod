@@ -58,7 +58,7 @@ public class InfusionAltarBlock extends Block implements ITileEntityProvider,IHa
 		setResistance(15f);//obsidian
 		setHarvestLevel("pickaxe",2);
 		setLightLevel(0f);
-		
+
 		ModBlocks.BLOCKS.add(this);
 		ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
 		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(BURNING, false));
@@ -112,8 +112,8 @@ public class InfusionAltarBlock extends Block implements ITileEntityProvider,IHa
 			else if (face == EnumFacing.WEST && west.isFullBlock() && !east.isFullBlock()) face = EnumFacing.EAST;
 			else if (face == EnumFacing.EAST && east.isFullBlock() && !west.isFullBlock()) face = EnumFacing.WEST;
 			worldIn.setBlockState(pos, state.withProperty(FACING, face), 2);
-//			 EntityItem entityItem = new EntityItem(worldIn, pos.getX(), pos.getY()+1, pos.getZ(), stack);
-//			 worldIn.spawnEntity(Item.getItemFromBlock(ModBlocks.INFUSION_THING));
+			//			 EntityItem entityItem = new EntityItem(worldIn, pos.getX(), pos.getY()+1, pos.getZ(), stack);
+			//			 worldIn.spawnEntity(Item.getItemFromBlock(ModBlocks.INFUSION_THING));
 		}
 	}
 
@@ -136,7 +136,7 @@ public class InfusionAltarBlock extends Block implements ITileEntityProvider,IHa
 	public TileEntity createNewTileEntity(World worldIn, int meta) 
 	{
 		return new TileEntityInfusionAltar();
-		
+
 	}
 
 	@Override
@@ -196,20 +196,19 @@ public class InfusionAltarBlock extends Block implements ITileEntityProvider,IHa
 	{
 		return ((EnumFacing)state.getValue(FACING)).getIndex();
 	}	
-	@Override
-	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-		return INFUSION_ALTAR_BLOCK_AABB;
-	}
+//	@Override
+//	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+//		return INFUSION_ALTAR_BLOCK_AABB;
+//	}
 	@Override
 	public void registerModels() {
 		Main.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
-		
-	}
-	 @SideOnly(Side.CLIENT)
-	    public void initModel() {
-	        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
-	        // Bind our TESR to our tile entity
-	        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityInfusionAltar.class, new TESRAltar());
 
-}
+	}
+
+//	public void initModel() {
+//		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+//		// Bind our TESR to our tile entity
+//		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityInfusionAltar.class, new TESRAltar());
+//	}
 }

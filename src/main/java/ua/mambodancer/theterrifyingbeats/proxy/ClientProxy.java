@@ -19,12 +19,7 @@ public class ClientProxy extends CommonProxy {
 	public void registerRenderers() {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityInfusionAltar.class, new TESRAltar());
 	}
-	  
-      public void preInit(FMLPreInitializationEvent e) {
-          super.preInit(e);
-
-          OBJLoader.INSTANCE.addDomain(Reference.MOD_ID);
-      }
+	 
       public void init() {
     	  ClientRegistry.bindTileEntitySpecialRenderer(TileEntityInfusionAltar.class, new TESRAltar());
       }

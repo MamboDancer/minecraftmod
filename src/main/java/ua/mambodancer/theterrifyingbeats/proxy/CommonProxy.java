@@ -17,10 +17,7 @@ public class CommonProxy {
 	public void registerRenderers() {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityInfusionAltar.class, new TESRAltar());
 	}
-	public void preInit(FMLPreInitializationEvent e) {
-		
-		
-	}
+	
 	
         
 }

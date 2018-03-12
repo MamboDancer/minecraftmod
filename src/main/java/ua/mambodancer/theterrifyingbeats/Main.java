@@ -68,6 +68,3 @@ public class Main {
 	};
 	public static SimpleNetworkWrapper wrapper;
 }
-
-
-

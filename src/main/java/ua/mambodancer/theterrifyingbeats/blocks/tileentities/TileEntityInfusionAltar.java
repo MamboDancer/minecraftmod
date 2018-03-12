@@ -122,8 +122,8 @@ public class TileEntityInfusionAltar extends TileEntity implements IInventory, I
 	@Override
 	public void readFromNBT(NBTTagCompound compound)
 	{
-		((INBTSerializable<NBTTagCompound>) inventory).deserializeNBT(compound.getCompoundTag("inventory"));
-		lastChangeTime = compound.getLong("lastChangeTime");
+//		((INBTSerializable<NBTTagCompound>) inventory).deserializeNBT(compound.getCompoundTag("inventory"));
+//		lastChangeTime = compound.getLong("lastChangeTime");
 		super.readFromNBT(compound);
 		this.inventory = NonNullList.<ItemStack>withSize(this.getSizeInventory(), ItemStack.EMPTY);
 		ItemStackHelper.loadAllItems(compound, this.inventory);
@@ -138,15 +138,15 @@ public class TileEntityInfusionAltar extends TileEntity implements IInventory, I
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) 
 	{
-		compound.setTag("inventory", ((INBTSerializable<NBTTagCompound>) inventory).serializeNBT());
-		compound.setLong("lastChangeTime", lastChangeTime);
+//		compound.setTag("inventory", ((INBTSerializable<NBTTagCompound>) inventory).serializeNBT());
+//		compound.setLong("lastChangeTime", lastChangeTime);
 		super.writeToNBT(compound);
 		compound.setInteger("BurnTime", (short)this.burnTime);
 		compound.setInteger("CookTime", (short)this.cookTime);
 		compound.setInteger("CookTimeTotal", (short)this.totalCookTime);
 		ItemStackHelper.saveAllItems(compound, this.inventory);
 		
-		if(this.hasCustomName()) compound.setString("CustomName", this.customName);
+//		if(this.hasCustomName()) compound.setString("CustomName", this.customName);
 		return compound;
 	}
 
@@ -169,6 +169,7 @@ public class TileEntityInfusionAltar extends TileEntity implements IInventory, I
 	
 	public void update() 
 	{
+		
 		boolean flag = this.isBurning();
 		boolean flag1 = false;
 		
@@ -231,7 +232,7 @@ public class TileEntityInfusionAltar extends TileEntity implements IInventory, I
 	
 	public int getCookTime(ItemStack input1, ItemStack input2) 
 	{
-		return 200;
+		return 2000;
 	}
 	
 	private boolean canSmelt() 
@@ -372,10 +373,10 @@ public class TileEntityInfusionAltar extends TileEntity implements IInventory, I
 	{
 		this.inventory.clear();
 	}
-	@Override
-	public AxisAlignedBB getRenderBoundingBox() {
-		return new AxisAlignedBB(getPos(), getPos().add(1, 2, 1));
-	}
+//	@Override
+//	public AxisAlignedBB getRenderBoundingBox() {
+//		return new AxisAlignedBB(getPos(), getPos().add(1, 2, 1));
+//	}
 	
 	
 }
