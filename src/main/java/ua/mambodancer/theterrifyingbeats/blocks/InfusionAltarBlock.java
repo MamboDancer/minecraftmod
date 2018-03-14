@@ -112,8 +112,7 @@ public class InfusionAltarBlock extends Block implements ITileEntityProvider,IHa
 			else if (face == EnumFacing.WEST && west.isFullBlock() && !east.isFullBlock()) face = EnumFacing.EAST;
 			else if (face == EnumFacing.EAST && east.isFullBlock() && !west.isFullBlock()) face = EnumFacing.WEST;
 			worldIn.setBlockState(pos, state.withProperty(FACING, face), 2);
-			//			 EntityItem entityItem = new EntityItem(worldIn, pos.getX(), pos.getY()+1, pos.getZ(), stack);
-			//			 worldIn.spawnEntity(Item.getItemFromBlock(ModBlocks.INFUSION_THING));
+		
 		}
 	}
 
@@ -206,9 +205,4 @@ public class InfusionAltarBlock extends Block implements ITileEntityProvider,IHa
 
 	}
 
-//	public void initModel() {
-//		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
-//		// Bind our TESR to our tile entity
-//		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityInfusionAltar.class, new TESRAltar());
-//	}
 }

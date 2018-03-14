@@ -29,7 +29,9 @@ public class InfusionAltarRecipes {
 		addAltarRecipe(new ItemStack(Items.DIAMOND), new ItemStack(Items.EGG), new ItemStack(Items.ELYTRA),  555.0F);
 		addAltarRecipe(new ItemStack(ModItems.INFUSED_STAR), new ItemStack(ModItems.UNINFUSED_PICK_AXE), new ItemStack(ModItems.ONE_TIME_INFUSED_PICKAXE), 555.0F);
 		addAltarRecipe(new ItemStack(ModItems.INFUSED_STAR), new ItemStack(ModItems.ONE_TIME_INFUSED_PICKAXE), new ItemStack(ModItems.TWO_TIME_INFUSED_PICKAXE), 555.0F);
-		addAltarRecipe(new ItemStack(ModItems.INFUSED_STAR), new ItemStack(ModItems.TWO_TIME_INFUSED_PICKAXE), new ItemStack(ModItems.THREE_TIME_INFUSED_PICKAXE), 555.0F);
+		addAltarRecipe(new ItemStack(ModItems.INFUSED_STAR), new ItemStack(ModItems.TWO_TIME_INFUSED_PICKAXE), new ItemStack(ModItems.THREE_TIME_INFUSED_PICKAXE), 555.0F);		
+		addAltarRecipe(new ItemStack(ModItems.BANEFUL_BLADE), new ItemStack(ModItems.BANEFUL_BLADE_RUCHKA), new ItemStack(ModItems.BANEFUL_LIGHT), 555.0F);
+		addAltarRecipe(new ItemStack(ModItems.BANEFUL_BLADE_RUCHKA), new ItemStack(ModItems.BANEFUL_BLADE), new ItemStack(ModItems.BANEFUL_LIGHT), 555.0F);
 	}
 
 

@@ -12,6 +12,7 @@ import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -22,27 +23,23 @@ import ua.mambodancer.theterrifyingbeats.init.ModBlocks;
 import ua.mambodancer.theterrifyingbeats.init.ModItems;
 
 public class TESRAltar extends TileEntitySpecialRenderer<TileEntityInfusionAltar> {
-
-	//	EntityItem ITEM = new EntityItem(Minecraft.getMinecraft().world,0,1,0, new ItemStack(Item.getItemFromBlock(ModBlocks.INFUSION_THING)));
+	public final EntityItem entityItem = new EntityItem(Minecraft.getMinecraft().world, 0, 0, 0, new ItemStack(Item.getItemFromBlock(ModBlocks.INFUSION_THING)));
 	@Override
 	public void render(TileEntityInfusionAltar te, double x, double y, double z, float partialTicks, int destroyStage,
-			float alpha) {
-		super.render(te, x, y, z, partialTicks, destroyStage, alpha);
-
-		EntityItem entityItem = new EntityItem(Minecraft.getMinecraft().world, 0, 0, 0, new ItemStack(Item.getItemFromBlock(ModBlocks.INFUSION_THING)));
+			float unused) {
+		super.render(te, x, y, z, partialTicks, destroyStage, unused);
 		{
-
-//			entityItem.hoverStart=0f;
-//			GlStateManager.translate((float)x +0.5F, (float)y, (float)z +0.5F);
-//			float speed = 2;
-//			GlStateManager.rotate(angle, 0, 1, 0);
-//			GlStateManager.translate(0, -0.7, 0);
-			long angle = (System.currentTimeMillis() * 100) % 360;
+			GlStateManager.pushMatrix();	
+			long angle = (System.currentTimeMillis() / 40) % 360;
 			GlStateManager.translate(x, y, z);
             GlStateManager.translate(0.5, 1.2, 0.5);
-            GlStateManager.rotate(angle, 0f, 0.1f, 0f);
-			Minecraft.getMinecraft().getRenderManager().renderEntity(entityItem, 0, 0, 0, angle, 0f, true);
+            GlStateManager.rotate(0f, 0, 1, 0); //Rotating everything
+        	GlStateManager.rotate(-angle, 0, 1, 0); //reverting the rotation with an equal but negative angle
+			Minecraft.getMinecraft().getRenderManager().renderEntity(entityItem, 0, 0, 0, partialTicks, 0f, true);
 		}
 		GlStateManager.popMatrix();
+		
 	}
+	
+	
 }

@@ -1,0 +1,50 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "model": "cross"
+    },
+    "variants": {
+        "age": {
+            "0": {
+                "textures": {
+                    "cross": "ttb:blocks/cathalyzatorcrop/0"
+                }
+            },
+            "1": {
+                "textures": {
+                    "cross": "ttb:blocks/cathalyzatorcrop/1"
+                }
+            },
+            "2": {
+                "textures": {
+                    "cross": "ttb:blocks/cathalyzatorcrop/2"
+                }
+            },
+            "3": {
+                "textures": {
+                    "cross": "ttb:blocks/cathalyzatorcrop/3"
+                }
+            },
+            "4": {
+                "textures": {
+                    "cross": "ttb:blocks/cathalyzatorcrop/4"
+                }
+            },
+            "5": {
+                "textures": {
+                    "cross": "ttb:blocks/cathalyzatorcrop/5"
+                }
+            },
+            "6": {
+                "textures": {
+                    "cross": "ttb:blocks/cathalyzatorcrop/6"
+                }
+            },
+            "7": {
+                "textures": {
+                    "cross": "ttb:blocks/cathalyzatorcrop/7"
+                }
+            }
+        }
+    }
+}

@@ -10,6 +10,7 @@ import ua.mambodancer.theterrifyingbeats.blocks.CathalyzatorBlock;
 import ua.mambodancer.theterrifyingbeats.blocks.InfusionAltarBlock;
 import ua.mambodancer.theterrifyingbeats.blocks.InfusionThingBlock;
 import ua.mambodancer.theterrifyingbeats.blocks.TheTerrifyingBlock;
+//import ua.mambodancer.theterrifyingbeats.blocks.crops.BlockCropCathalyzator;
 import ua.mambodancer.theterrifyingbeats.util.Reference;
 
 
@@ -20,4 +21,6 @@ public class ModBlocks {
 	public final static Block CATHALYST_BLOCK = new CathalyzatorBlock(Reference.MOD_ID + ":" + "cathalyzatorblock",Material.IRON);
 	public final static Block INFUSION_ALTAR = new InfusionAltarBlock(Reference.MOD_ID + ":" + "infusionaltar", Material.IRON);
 	public final static Block INFUSION_THING= new InfusionThingBlock(Reference.MOD_ID + ":" + "infusionthing", Material.ANVIL);
+//	public final static Block BLOCK_CROP_CATHALYZATOR= new BlockCropCathalyzator();
+	
 }
